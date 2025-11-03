@@ -1206,7 +1206,6 @@ s
 
 - **Issues**: [GitHub Issues](https://github.com/mohammedrefaat/dynamic-gateway/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/mohammedrefaat/dynamic-gateway/discussions)
-- **Email**: support@yourcompany.com
 
 ---
 
