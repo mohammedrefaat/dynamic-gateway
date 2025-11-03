@@ -10,7 +10,7 @@
 
 **A fully dynamic, protocol-converting API gateway supporting HTTP↔HTTP, gRPC↔gRPC, HTTP↔gRPC, and gRPC↔HTTP routing with JSON configuration**
 
-[Features](#-features) • [Quick Start](#-quick-start) • [Configuration](#-configuration) • [Architecture](#-architecture) • [Examples](#-examples)
+[Features](#-features) • [Quick Start](#-quick-start) • [Configuration](#-configuration) • [Architecture](#-architecture) • [Examples](#-usage-examples)
 
 </div>
 
