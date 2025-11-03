@@ -1153,7 +1153,7 @@ Contributions are welcome! Please follow these guidelines:
 
 ```bash
 # Fork and clone
-git clone https://github.com/yourusername/dynamic-gateway.git
+git clone https://github.com/mohammedrefaat/dynamic-gateway.git
 cd dynamic-gateway
 
 # Create feature branch
@@ -1195,7 +1195,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ## 🙏 Acknowledgments
-
+s
 - [grpc-ecosystem/grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) - Inspiration
 - Go gRPC team - Excellent gRPC implementation
 - Contributors and community
@@ -1204,8 +1204,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/dynamic-gateway/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/dynamic-gateway/discussions)
+- **Issues**: [GitHub Issues](https://github.com/mohammedrefaat/dynamic-gateway/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/mohammedrefaat/dynamic-gateway/discussions)
 - **Email**: support@yourcompany.com
 
 ---

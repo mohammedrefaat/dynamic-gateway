@@ -2,11 +2,35 @@ version: '3.8'
 
 services:
   gateway:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "7000:7000"
       - "8091:8091"
     volumes:
-      - ./configs:/root/configs
+      - ./configs:/root/configs:ro
     environment:
+      - LOG_LEVEL=info
       - CONFIG_PATH=/root/configs/config.json
+    restart: unless-stopped
+    networks:
+      - gateway-network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:7000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Example backend service
+  backend-service:
+    image: your-backend:latest
+    ports:
+      - "9001:9001"
+    networks:
+      - gateway-network
+
+networks:
+  gateway-network:
+    driver: bridge

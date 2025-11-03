@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dynamic-gateway
+  labels:
+    app: gateway
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gateway
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+      - name: gateway
+        image: dynamic-gateway:latest
+        ports:
+        - containerPort: 7000
+          name: http
+        - containerPort: 8091
+          name: grpc
+        env:
+        - name: CONFIG_PATH
+          value: "/config/config.json"
+        volumeMounts:
+        - name: config
+          mountPath: /config
+          readOnly: true
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 7000
+          initialDelaySeconds: 10
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 7000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      volumes:
+      - name: config
+        configMap:
+          name: gateway-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-service
+spec:
+  selector:
+    app: gateway
+  ports:
+  - name: http
+    port: 7000
+    targetPort: 7000
+  - name: grpc
+    port: 8091
+    targetPort: 8091
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-config
+data:
+  config.json: |
+    {
+      "host": "0.0.0.0",
+      "http_port": 7000,
+      "tls_port": 8091,
+      "run_http_server": true,
+      "run_tls_server": true,
+      "grpc_services": [...],
+      "http_routes": [...]
+    }
