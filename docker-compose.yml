@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  gateway:
+    build: .
+    ports:
+      - "7000:7000"
+      - "8091:8091"
+    volumes:
+      - ./configs:/root/configs
+    environment:
+      - CONFIG_PATH=/root/configs/config.json
